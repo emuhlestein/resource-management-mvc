@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Product Type</title>
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.1.0/css/bootstrap.min.css} "/>
+    <style>
+<!--        body {-->
+<!--            background-color: #3e3e3e;-->
+<!--            color: white;-->
+<!--        }-->
+        .product-type-container {
+            max-width: 330px;
+  	        padding: 15px;
+  	        margin: 0 auto;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="container product-type-container">
+        <h2 class="text-center">List of Product Types</h2>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>
+                    Product Type
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            <th:block th:each="producttype : ${producttypes}">
+                <tr>
+                    <td th:text="${producttype}"></td>
+                </tr>
+            </th:block>
+            </tbody>
+
+        </table>
+
+        <button class="btn btn-success btn-block">Press Me</button>
+    </div>
+    <script th:src="@{/webjars/jquery/3.0.0/jquery.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/4.1.0/js/bootstrap.min.js}"></script>
+</body>
+</html>
