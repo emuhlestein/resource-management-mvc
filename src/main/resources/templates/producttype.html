@@ -3,43 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <title>Product Type</title>
-    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.1.0/css/bootstrap.min.css} "/>
+<!--    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.1.0/css/bootstrap.min.css} "/>-->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet"
     <style>
 <!--        body {-->
 <!--            background-color: #3e3e3e;-->
 <!--            color: white;-->
 <!--        }-->
         .product-type-container {
-            max-width: 330px;
+            max-width: 500px;
   	        padding: 15px;
   	        margin: 0 auto;
         }
-
+        .submit-button {
+            max-width: 330px;
+            padding: 15px;
+            margin: 0 auto;
+        }
 
     </style>
 </head>
 <body>
     <div class="container product-type-container">
-        <h2 class="text-center">List of Product Types</h2>
+<!--        <h2 class="text-center">List of Product Types</h2>-->
         <table class="table table-striped">
             <thead>
             <tr>
                 <th>
-                    Product Type
+                    Product Types
+                </th>
+                <th>
+                    Description
                 </th>
             </tr>
             </thead>
             <tbody>
             <th:block th:each="producttype : ${producttypes}">
                 <tr>
-                    <td th:text="${producttype}"></td>
+                    <td th:text="${producttype.name}"></td>
+                    <td th:text="${producttype.description}"></td>
                 </tr>
             </th:block>
             </tbody>
 
         </table>
 
-        <button class="btn btn-success btn-block">Press Me</button>
+        <form th:action="@{/producttype}" method="get">
+            <button type="submit" class="btn btn-success btn-block submit-button">Create New Product Type</button>
+        </form>
     </div>
     <script th:src="@{/webjars/jquery/3.0.0/jquery.min.js}"></script>
     <script th:src="@{/webjars/bootstrap/4.1.0/js/bootstrap.min.js}"></script>
