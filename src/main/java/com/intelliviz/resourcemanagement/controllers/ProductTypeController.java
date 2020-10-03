@@ -1,7 +1,7 @@
-package com.intelliviz.resourcemanagement.controller;
+package com.intelliviz.resourcemanagement.controllers;
 
-import com.intelliviz.resourcemanagement.model.ProductType;
-import com.intelliviz.resourcemanagement.service.ProductTypeService;
+import com.intelliviz.resourcemanagement.models.ProductTypeEntity;
+import com.intelliviz.resourcemanagement.services.ProductTypeService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Controller;
@@ -24,30 +24,31 @@ public class ProductTypeController {
     @GetMapping("/producttypes")
     public String showProductTypePage(Model model) {
         LOGGER.info("In ProductTypeController: showProductTypePage");
-        List<ProductType> productTypes = service.getall();
-        model.addAttribute("producttypes", productTypes);
+        List<ProductTypeEntity> productTypeEntities = service.getall();
+        model.addAttribute("producttypes", productTypeEntities);
         return "producttype";
     }
 
     @GetMapping("/producttypes/{id}")
     public String showProductTypePageForId(@PathVariable int id, Model model) {
         LOGGER.info("In ProductTypeController: showProductTypePageForId: " + id);
-        List<ProductType> productTypes = service.getall();
-        model.addAttribute("producttypes", productTypes);
+        List<ProductTypeEntity> productTypeEntities = service.getall();
+        model.addAttribute("producttypes", productTypeEntities);
         return "producttype";
     }
 
     @GetMapping("/producttype")
 //    @ResponseBody
-    public String showAddProductTypePage(Model model) {
-        model.addAttribute("producttype", new ProductType());
+    public String showAddProductTypePage(@RequestParam String name, Model model) {
+        LOGGER.info("In ProductTypeController: showProductTypePageForId: " + name);
+        model.addAttribute("producttype", new ProductTypeEntity());
         return "addproducttype";
     }
 
     @PostMapping("/producttype")
-    public String addProductType(@ModelAttribute ProductType productType) {
+    public String addProductType(@ModelAttribute ProductTypeEntity productTypeEntity) {
         // save new product type to database
-        service.save(productType);
+        service.save(productTypeEntity);
         return "redirect:producttypes";
     }
 }
