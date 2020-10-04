@@ -8,14 +8,14 @@ public class ProductTypeEntity {
     public static final String TABLE_NAME="product_type";
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(nullable = false, updatable = false)
     private long id;
 
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false, unique = true, length = 10)
     private String name;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 255)
     private String description;
 
     public ProductTypeEntity() {
@@ -24,6 +24,10 @@ public class ProductTypeEntity {
     public ProductTypeEntity(String name, String description) {
         this.name = name;
         this.description = description;
+    }
+
+    public long getId() {
+        return id;
     }
 
     public String getName() {

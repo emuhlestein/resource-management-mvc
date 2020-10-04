@@ -1,6 +1,8 @@
 package com.intelliviz.resourcemanagement.services;
 
 import com.intelliviz.resourcemanagement.models.ProductTypeEntity;
+import com.intelliviz.resourcemanagement.repositories.ProductTypeJpaRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -10,18 +12,13 @@ import java.util.List;
 @Service
 public class ProductTypeService {
 
-    private List<ProductTypeEntity> productTypeEntities = Arrays.asList(
-            new ProductTypeEntity("Grain", "The grains"),
-            new ProductTypeEntity("Legumes", "The legumes"),
-            new ProductTypeEntity("Beans", "The beans"),
-            new ProductTypeEntity("Sugars", "The sugars"),
-            new ProductTypeEntity("Fats and Oil", "The fats and oils"),
-            new ProductTypeEntity("Milk", "Milk products"),
-            new ProductTypeEntity("Baking", "Items needed for baking")
-    );
+    private ProductTypeJpaRepository productTypeJpaRepository;
+    private List<ProductTypeEntity> productTypeEntities = new ArrayList<>();
 
-    public ProductTypeService() {
-        productTypeEntities = new ArrayList<>();
+    @Autowired
+    public ProductTypeService(ProductTypeJpaRepository productTypeJpaRepository) {
+        this.productTypeJpaRepository = productTypeJpaRepository;
+
         productTypeEntities.add(new ProductTypeEntity("Grain", "The grains"));
         productTypeEntities.add(new ProductTypeEntity("Legumes", "The legumes"));
         productTypeEntities.add(new ProductTypeEntity("Beans", "The beans"));
@@ -31,11 +28,21 @@ public class ProductTypeService {
         productTypeEntities.add(new ProductTypeEntity("Baking", "Items needed for baking"));
     }
 
+    public ProductTypeService() {
+
+    }
+
     public List<ProductTypeEntity> getall() {
+        List<ProductTypeEntity> pteList = productTypeJpaRepository.getAll();
+        if(pteList.size() > 0) {
+            return pteList;
+        }
         return productTypeEntities;
     }
 
-    public void save(ProductTypeEntity productTypeEntity) {
-        productTypeEntities.add(productTypeEntity);
+    public ProductTypeEntity save(ProductTypeEntity productTypeEntity) {
+        return productTypeJpaRepository.saveAndFlush(productTypeEntity);
+//        return productTypeJpaRepository.insert(productTypeEntity.getName(), productTypeEntity.getDescription());
+//        productTypeEntities.add(productTypeEntity);
     }
 }

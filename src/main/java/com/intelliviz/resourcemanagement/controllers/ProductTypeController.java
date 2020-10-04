@@ -39,8 +39,8 @@ public class ProductTypeController {
 
     @GetMapping("/producttype")
 //    @ResponseBody
-    public String showAddProductTypePage(@RequestParam String name, Model model) {
-        LOGGER.info("In ProductTypeController: showProductTypePageForId: " + name);
+    public String showAddProductTypePage(Model model) {
+        LOGGER.info("In ProductTypeController: showProductTypePageForId");
         model.addAttribute("producttype", new ProductTypeEntity());
         return "addproducttype";
     }
@@ -48,7 +48,7 @@ public class ProductTypeController {
     @PostMapping("/producttype")
     public String addProductType(@ModelAttribute ProductTypeEntity productTypeEntity) {
         // save new product type to database
-        service.save(productTypeEntity);
+        ProductTypeEntity pte = service.save(productTypeEntity);
         return "redirect:producttypes";
     }
 }
