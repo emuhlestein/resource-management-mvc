@@ -1,21 +1,42 @@
 package com.intelliviz.resourcemanagement.repositories;
 
 import com.intelliviz.resourcemanagement.models.ProductTypeEntity;
-import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 import java.util.List;
 
-public interface ProductTypeJpaRepository extends JpaRepository<ProductTypeEntity, Long> {
+@Repository
+@Transactional
+public class ProductTypeJpaRepository {
 
-    @Query("SELECT pte FROM ProductTypeEntity pte")
-    List<ProductTypeEntity> getAll();
+    @PersistenceContext
+    EntityManager em;
 
-    @Modifying
-    @Transactional
-    @Query(value = "INSERT INTO product_type (name, description) VALUES(:name, :description)", nativeQuery = true)
-    int insert(@Param("name") String name, @Param("description") String description);
+    public List<ProductTypeEntity> getAll() {
+        final TypedQuery<ProductTypeEntity> query = em.createQuery("SELECT pte FROM ProductTypeEntity pte", ProductTypeEntity.class);
+        return query.getResultList();
+    }
+
+    public ProductTypeEntity insert(String name, String description) {
+        ProductTypeEntity entity = new ProductTypeEntity(name, description);
+        em.persist(entity);
+        return entity;
+    }
+
+    public ProductTypeEntity insert(ProductTypeEntity entity) {
+        em.persist(entity);
+        return entity;
+    }
+
+//    @Modifying
+//    @Transactional
+//    @Query(value = "INSERT INTO product_type (name, description) VALUES(:name, :description)", nativeQuery = true)
+//    int insert(@Param("name") String name, @Param("description") String description);
 }

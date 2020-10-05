@@ -41,7 +41,7 @@ public class ProductTypeService {
     }
 
     public ProductTypeEntity save(ProductTypeEntity productTypeEntity) {
-        return productTypeJpaRepository.saveAndFlush(productTypeEntity);
+        return productTypeJpaRepository.insert(productTypeEntity);
 //        return productTypeJpaRepository.insert(productTypeEntity.getName(), productTypeEntity.getDescription());
 //        productTypeEntities.add(productTypeEntity);
     }
