@@ -43,8 +43,8 @@
             <tbody>
             <c:forEach var="producttype" items="${producttypes}">
                 <tr>
-                    <td th:text="${producttype.name}"></td>
-                    <td th:text="${producttype.description}"></td>
+                    <td><c:out value="${producttype.name}"/></td>
+                    <td><c:out value="${producttype.description}"/></td>
                     <td><link rel="eye-icon" /></td>
                 </tr>
             </c:forEach>
