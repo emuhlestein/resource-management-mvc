@@ -24,6 +24,10 @@ public class ProductTypeJpaRepository {
         return query.getResultList();
     }
 
+    public ProductTypeEntity findById(long id) {
+        return em.find(ProductTypeEntity.class, id);
+    }
+
     public ProductTypeEntity insert(String name, String description) {
         ProductTypeEntity entity = new ProductTypeEntity(name, description);
         em.persist(entity);

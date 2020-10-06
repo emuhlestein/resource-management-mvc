@@ -37,13 +37,12 @@ public class ProductTypeController {
         return "producttype";
     }
 
-    @GetMapping("/producttype")
-//    @ResponseBody
-    public String showAddProductTypePage(Model model) {
-        LOGGER.info("In ProductTypeController: showProductTypePageForId");
-        model.addAttribute("producttype", new ProductTypeEntity());
-        return "addproducttype";
-    }
+//    @GetMapping("/producttype")
+//    public String showAddProductTypePage(Model model) {
+//        LOGGER.info("In ProductTypeController: showAddProductTypePage");
+//        model.addAttribute("producttype", new ProductTypeEntity());
+//        return "addproducttype";
+//    }
 
     @PostMapping("/producttype")
     public String addProductType(@ModelAttribute ProductTypeEntity productTypeEntity) {
