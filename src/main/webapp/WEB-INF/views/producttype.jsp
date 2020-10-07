@@ -35,7 +35,7 @@
                 <th>
                     Description
                 </th>
-                <th>
+                <th class="text-center">
                     Actions
                 </th>
             </tr>
@@ -45,7 +45,7 @@
                 <tr>
                     <td><c:out value="${producttype.name}"/></td>
                     <td><c:out value="${producttype.description}"/></td>
-                    <td><link rel="eye-icon" /></td>
+                    <td class="text-center"><a href="#"><i class="far fa-trash-alt" title="Delete product type"></i></a><a class="ml-1" href="#"><i class="far fa-edit" title="Edit product type"></i></a></td>
                 </tr>
             </c:forEach>
             </tbody>
@@ -60,5 +60,6 @@
     </div>
     <script src="@{/webjars/jquery/3.0.0/jquery.min.js}"></script>
     <script src="@{/webjars/bootstrap/4.1.0/js/bootstrap.min.js}"></script>
+    <script src="https://kit.fontawesome.com/d3765305ff.js" crossorigin="anonymous"></script>
 </body>
 </html>
