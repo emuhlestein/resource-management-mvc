@@ -61,6 +61,9 @@ public class ProductTypeController {
     public String deleteProductType(@PathVariable int id) {
         // delete the product type
         LOGGER.info("In ProductTypeController: deleteProductType: " + id);
+        if(id != -1) {
+            service.deleteById(id);
+        }
         return "redirect:/producttypes";
     }
 }

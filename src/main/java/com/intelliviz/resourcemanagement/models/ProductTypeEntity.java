@@ -29,6 +29,7 @@ public class ProductTypeEntity {
 
     public ProductTypeEntity(String name, String description) {
         LOGGER.info("In ProductTypeEntity: constructor");
+        this.id = -1;
         this.name = name;
         this.description = description;
     }

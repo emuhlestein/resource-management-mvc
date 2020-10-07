@@ -39,6 +39,11 @@ public class ProductTypeJpaRepository {
         return entity;
     }
 
+    public void deleteById(long id) {
+        ProductTypeEntity pte = findById(id);
+        em.remove(pte);
+    }
+
 //    @Modifying
 //    @Transactional
 //    @Query(value = "INSERT INTO product_type (name, description) VALUES(:name, :description)", nativeQuery = true)
