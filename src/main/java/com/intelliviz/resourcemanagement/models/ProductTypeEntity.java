@@ -5,23 +5,28 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = ProductTypeEntity.TABLE_NAME)
 public class ProductTypeEntity {
     public static final String TABLE_NAME="product_type";
-    private static Logger LOGGER = LogManager.getLogger(ProductTypeController.class);
+    private static Logger LOGGER = LogManager.getLogger(ProductTypeEntity.class);
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(nullable = false, updatable = false)
     private long id;
 
-    @Column(nullable = false, unique = true, length = 10)
+    @Column(nullable = false, unique = true, length = 64)
     private String name;
 
     @Column(nullable = false, length = 255)
     private String description;
+
+    @OneToMany(mappedBy = "productType")
+    private List<ProductEntity> products = new ArrayList<>();
 
     public ProductTypeEntity() {
         LOGGER.info("In ProductTypeEntity: default constructor");
@@ -52,5 +57,17 @@ public class ProductTypeEntity {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public List<ProductEntity> getProducts() {
+        return products;
+    }
+
+    public void addProduct(ProductEntity product) {
+        this.products.add(product);
+    }
+
+    public void removeProduct(ProductEntity productEntity) {
+        this.products.remove(productEntity);
     }
 }

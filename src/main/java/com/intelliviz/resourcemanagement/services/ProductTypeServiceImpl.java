@@ -13,31 +13,37 @@ import java.util.List;
 public class ProductTypeServiceImpl implements ProductTypeService {
 
     private ProductTypeJpaRepository productTypeJpaRepository;
-    private List<ProductTypeEntity> productTypeEntities = new ArrayList<>();
 
     @Autowired
     public ProductTypeServiceImpl(ProductTypeJpaRepository productTypeJpaRepository) {
         this.productTypeJpaRepository = productTypeJpaRepository;
-
-        productTypeEntities.add(new ProductTypeEntity("Grain", "The grains"));
-        productTypeEntities.add(new ProductTypeEntity("Legumes", "The legumes"));
-        productTypeEntities.add(new ProductTypeEntity("Beans", "The beans"));
-        productTypeEntities.add(new ProductTypeEntity("Sugars", "The sugars"));
-        productTypeEntities.add(new ProductTypeEntity("Fats and Oil", "The fats and oils"));
-        productTypeEntities.add(new ProductTypeEntity("Milk", "Milk products"));
-        productTypeEntities.add(new ProductTypeEntity("Baking", "Items needed for baking"));
     }
+
+    //    private List<ProductTypeEntity> productTypeEntities = new ArrayList<>();
+
+//    @Autowired
+//    public ProductTypeServiceImpl(ProductTypeJpaRepository productTypeJpaRepository) {
+//        this.productTypeJpaRepository = productTypeJpaRepository;
+//
+//        productTypeEntities.add(new ProductTypeEntity("Grain", "The grains"));
+//        productTypeEntities.add(new ProductTypeEntity("Legumes", "The legumes"));
+//        productTypeEntities.add(new ProductTypeEntity("Beans", "The beans"));
+//        productTypeEntities.add(new ProductTypeEntity("Sugars", "The sugars"));
+//        productTypeEntities.add(new ProductTypeEntity("Fats and Oil", "The fats and oils"));
+//        productTypeEntities.add(new ProductTypeEntity("Milk", "Milk products"));
+//        productTypeEntities.add(new ProductTypeEntity("Baking", "Items needed for baking"));
+//    }
 
     public ProductTypeServiceImpl() {
 
     }
 
     public List<ProductTypeEntity> getall() {
-        List<ProductTypeEntity> pteList = productTypeJpaRepository.getAll();
-        if(pteList.size() > 0) {
-            return pteList;
-        }
-        return productTypeEntities;
+        return productTypeJpaRepository.getAll();
+//        if(pteList.size() > 0) {
+//            return pteList;
+//        }
+//        return productTypeEntities;
     }
 
     public ProductTypeEntity save(ProductTypeEntity productTypeEntity) {
