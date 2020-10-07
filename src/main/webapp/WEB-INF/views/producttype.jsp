@@ -3,8 +3,7 @@
 <head>
     <title>Product Type</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<!--    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.1.0/css/bootstrap.min.css} "/>-->
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="webjars/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet"/>
     <style>
 <!--        body {-->
 <!--            background-color: #3e3e3e;-->
@@ -45,12 +44,36 @@
                 <tr>
                     <td><c:out value="${producttype.name}"/></td>
                     <td><c:out value="${producttype.description}"/></td>
-                    <td class="text-center"><a href="#"><i class="far fa-trash-alt" title="Delete product type"></i></a><a class="ml-1" href="#"><i class="far fa-edit" title="Edit product type"></i></a></td>
+                    <td class="text-center">
+                        <a href="#"><i class="far fa-trash-alt" data-toggle="modal" data-target="#deleteModal" title="Delete product type"></i></a>
+                        <a class="ml-1" href="#"><i class="far fa-edit" title="Edit product type"></i></a>
+                    </td>
                 </tr>
             </c:forEach>
             </tbody>
 
         </table>
+
+        <!-- Modal -->
+        <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                ...
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+              </div>
+            </div>
+          </div>
+        </div>
 
         <a href="producttype.jsp" class="btn btn-success btn-block submit-button">Create New Product Type</a>
 
@@ -58,8 +81,8 @@
 <!--            <button type="submit" class="btn btn-success btn-block submit-button">Create New Product Type</button>-->
 <!--        </form>-->
     </div>
-    <script src="@{/webjars/jquery/3.0.0/jquery.min.js}"></script>
-    <script src="@{/webjars/bootstrap/4.1.0/js/bootstrap.min.js}"></script>
+    <script src="webjars/jquery/3.5.1/jquery.min.js"></script>
+    <script src="webjars/bootstrap/4.1.3/js/bootstrap.min.js"></script>
     <script src="https://kit.fontawesome.com/d3765305ff.js" crossorigin="anonymous"></script>
 </body>
 </html>
