@@ -3,8 +3,7 @@
 <head>
     <title>Add Product Type</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<!--    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.1.0/css/bootstrap.min.css} "/>-->
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="webjars/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet"/>
     <style>
         .product-type-form {
             max-width: 330px;
@@ -15,7 +14,7 @@
 </head>
 <body>
     <div class="container">
-        <form class="product-type-form" method="post" th:action="@{/producttype}" th:object="${producttype}">
+        <form class="product-type-form" method="post" action="producttype"">
             <h2 class="text-center">Add Product Type</h2>
             <div class="form-group mt-3">
                 <label for="name" class="sr-only">Name</label>
@@ -29,7 +28,8 @@
         </form>
     </div>
 
-    <script th:src="@{/webjars/jquery/3.0.0/jquery.min.js}"></script>
-    <script th:src="@{/webjars/bootstrap/4.1.0/js/bootstrap.min.js}"></script>
+    <script src="webjars/jquery/3.5.1/jquery.min.js"></script>
+    <script src="webjars/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <script src="https://kit.fontawesome.com/d3765305ff.js" crossorigin="anonymous"></script>
 </body>
 </html>

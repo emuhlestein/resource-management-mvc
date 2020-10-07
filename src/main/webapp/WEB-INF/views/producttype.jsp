@@ -9,6 +9,9 @@
 <!--            background-color: #3e3e3e;-->
 <!--            color: white;-->
 <!--        }-->
+        .delete-button {
+            display: inline-block !important;
+        }
         .product-type-container {
             max-width: 500px;
   	        padding: 15px;
@@ -25,6 +28,7 @@
 <body>
     <div class="container product-type-container">
         <h2 class="text-center">Product Types</h2>
+        <p><font color="red">${errorMessage}</font></p>
         <table class="table table-striped">
             <thead>
             <tr>
@@ -45,7 +49,9 @@
                     <td><c:out value="${producttype.name}"/></td>
                     <td><c:out value="${producttype.description}"/></td>
                     <td class="text-center">
-                        <a href="#"><i class="far fa-trash-alt" data-toggle="modal" data-target="#deleteModal" title="Delete product type"></i></a>
+                        <form class="delete-button" action="producttype/${producttype.id}" method="post">
+                            <button type="submit" class="btn btn-default"><i class="far fa-trash-alt" title="Delete product type"></i></button>
+                        </form>
                         <a class="ml-1" href="#"><i class="far fa-edit" title="Edit product type"></i></a>
                     </td>
                 </tr>
@@ -59,23 +65,25 @@
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Warning</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
               <div class="modal-body">
-                ...
+                Delete product type?
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <form method="POST" action="producttype/333">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary" data-dismiss="modal">Yes</button>
+                </form>
               </div>
             </div>
           </div>
         </div>
 
-        <a href="producttype.jsp" class="btn btn-success btn-block submit-button">Create New Product Type</a>
+        <a href="addproducttype" class="btn btn-success btn-block submit-button">Create New Product Type</a>
 
 <!--        <form action="/producttype" method="get">-->
 <!--            <button type="submit" class="btn btn-success btn-block submit-button">Create New Product Type</button>-->

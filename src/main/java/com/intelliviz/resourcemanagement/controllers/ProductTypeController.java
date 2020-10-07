@@ -24,6 +24,7 @@ public class ProductTypeController {
     @GetMapping("/producttypes")
     public String showProductTypePage(Model model) {
         LOGGER.info("In ProductTypeController: showProductTypePage");
+        model.addAttribute("errorMessage", "The operation failed");
         List<ProductTypeEntity> productTypeEntities = service.getall();
         model.addAttribute("producttypes", productTypeEntities);
         return "producttype";
@@ -44,10 +45,22 @@ public class ProductTypeController {
 //        return "addproducttype";
 //    }
 
+    @GetMapping("/addproducttype")
+    public String showAddProductType() {
+        return "addproducttype";
+    }
+
     @PostMapping("/producttype")
     public String addProductType(@ModelAttribute ProductTypeEntity productTypeEntity) {
         // save new product type to database
         ProductTypeEntity pte = service.save(productTypeEntity);
         return "redirect:producttypes";
+    }
+
+    @PostMapping("/producttype/{id}")
+    public String deleteProductType(@PathVariable int id) {
+        // delete the product type
+        LOGGER.info("In ProductTypeController: deleteProductType: " + id);
+        return "redirect:/producttypes";
     }
 }

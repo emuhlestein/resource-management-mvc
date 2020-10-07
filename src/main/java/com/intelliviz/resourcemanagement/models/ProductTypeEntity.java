@@ -1,11 +1,16 @@
 package com.intelliviz.resourcemanagement.models;
 
+import com.intelliviz.resourcemanagement.controllers.ProductTypeController;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = ProductTypeEntity.TABLE_NAME)
 public class ProductTypeEntity {
     public static final String TABLE_NAME="product_type";
+    private static Logger LOGGER = LogManager.getLogger(ProductTypeController.class);
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -19,9 +24,11 @@ public class ProductTypeEntity {
     private String description;
 
     public ProductTypeEntity() {
+        LOGGER.info("In ProductTypeEntity: default constructor");
     }
 
     public ProductTypeEntity(String name, String description) {
+        LOGGER.info("In ProductTypeEntity: constructor");
         this.name = name;
         this.description = description;
     }
