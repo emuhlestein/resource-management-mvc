@@ -6,6 +6,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -31,7 +32,7 @@ public class ProductTypeController {
     }
 
     @GetMapping("/producttypes/{id}")
-    public String showProductTypePageForId(@PathVariable int id, Model model) {
+    public String showProductTypePageForId(@PathVariable int id, ModelMap model) {
         LOGGER.info("In ProductTypeController: showProductTypePageForId: " + id);
         List<ProductTypeEntity> productTypeEntities = service.getall();
         model.addAttribute("producttypes", productTypeEntities);
@@ -57,7 +58,7 @@ public class ProductTypeController {
         return "redirect:producttypes";
     }
 
-    @PostMapping("/producttype/{id}")
+    @GetMapping("/delete-producttype/{id}")
     public String deleteProductType(@PathVariable int id) {
         // delete the product type
         LOGGER.info("In ProductTypeController: deleteProductType: " + id);
