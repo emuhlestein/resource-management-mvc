@@ -44,11 +44,11 @@ public class ProductTypeServiceImpl implements ProductTypeService {
 
     }
 
-    public List<ProductType> getall() {
+    public List<ProductType> getAll() {
         return productTypeDao.getAll();
     }
 
-    public List<ProductTypeEntity> getallEntities() {
+    public List<ProductTypeEntity> getAllEntities() {
         return Collections.emptyList(); //productTypeJpaRepository.getAll();
 //        if(pteList.size() > 0) {
 //            return pteList;

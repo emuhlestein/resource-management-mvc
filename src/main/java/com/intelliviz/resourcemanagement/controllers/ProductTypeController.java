@@ -27,7 +27,7 @@ public class ProductTypeController {
     public String showProductTypePage(Model model) {
         LOGGER.info("In ProductTypeController: showProductTypePage");
         model.addAttribute("errorMessage", "The operation failed");
-        List<ProductType> productTypes = service.getall();
+        List<ProductType> productTypes = service.getAll();
         model.addAttribute("producttypes", productTypes);
         return "producttype";
     }
@@ -35,7 +35,7 @@ public class ProductTypeController {
     @GetMapping("/producttypes/{id}")
     public String showProductTypePageForId(@PathVariable int id, ModelMap model) {
         LOGGER.info("In ProductTypeController: showProductTypePageForId: " + id);
-        List<ProductTypeEntity> productTypeEntities = service.getallEntities();
+        List<ProductTypeEntity> productTypeEntities = service.getAllEntities();
         model.addAttribute("producttypes", productTypeEntities);
         return "producttype";
     }
