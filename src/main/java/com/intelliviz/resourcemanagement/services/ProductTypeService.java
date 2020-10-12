@@ -1,11 +1,13 @@
 package com.intelliviz.resourcemanagement.services;
 
+import com.intelliviz.resourcemanagement.models.ProductType;
 import com.intelliviz.resourcemanagement.models.ProductTypeEntity;
 
 import java.util.List;
 
 public interface ProductTypeService {
-    List<ProductTypeEntity> getall();
-    ProductTypeEntity save(ProductTypeEntity productTypeEntity);
+    List<ProductType> getall();
+    List<ProductTypeEntity> getallEntities();
+    ProductType save(ProductType productType);
     void deleteById(int id);
 }

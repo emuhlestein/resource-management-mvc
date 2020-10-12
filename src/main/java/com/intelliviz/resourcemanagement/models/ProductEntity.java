@@ -3,29 +3,29 @@ package com.intelliviz.resourcemanagement.models;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import javax.persistence.*;
+//import javax.persistence.*;
 
-@Entity
-@Table(name = ProductEntity.TABLE_NAME)
+//@Entity
+//@Table(name = ProductEntity.TABLE_NAME)
 public class ProductEntity {
     public static final String TABLE_NAME="product";
     private static Logger LOGGER = LogManager.getLogger(ProductEntity.class);
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(nullable = false, updatable = false)
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.AUTO)
+//    @Column(nullable = false, updatable = false)
     private long id;
 
-    @Column(nullable = false)
+//    @Column(nullable = false)
     private float weight;
 
-    @Column(nullable = false, unique = true, length = 64)
+//    @Column(nullable = false, unique = true, length = 64)
     private String name;
 
-    @Column(nullable = false, length = 255)
+//    @Column(nullable = false, length = 255)
     private String description;
 
-    @ManyToOne
+//    @ManyToOne
     private ProductTypeEntity productType;
 
     public ProductEntity() {

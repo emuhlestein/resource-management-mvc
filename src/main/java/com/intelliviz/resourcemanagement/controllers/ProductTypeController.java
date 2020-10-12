@@ -1,5 +1,6 @@
 package com.intelliviz.resourcemanagement.controllers;
 
+import com.intelliviz.resourcemanagement.models.ProductType;
 import com.intelliviz.resourcemanagement.models.ProductTypeEntity;
 import com.intelliviz.resourcemanagement.services.ProductTypeService;
 import org.apache.logging.log4j.LogManager;
@@ -26,15 +27,15 @@ public class ProductTypeController {
     public String showProductTypePage(Model model) {
         LOGGER.info("In ProductTypeController: showProductTypePage");
         model.addAttribute("errorMessage", "The operation failed");
-        List<ProductTypeEntity> productTypeEntities = service.getall();
-        model.addAttribute("producttypes", productTypeEntities);
+        List<ProductType> productTypes = service.getall();
+        model.addAttribute("producttypes", productTypes);
         return "producttype";
     }
 
     @GetMapping("/producttypes/{id}")
     public String showProductTypePageForId(@PathVariable int id, ModelMap model) {
         LOGGER.info("In ProductTypeController: showProductTypePageForId: " + id);
-        List<ProductTypeEntity> productTypeEntities = service.getall();
+        List<ProductTypeEntity> productTypeEntities = service.getallEntities();
         model.addAttribute("producttypes", productTypeEntities);
         return "producttype";
     }
@@ -52,9 +53,9 @@ public class ProductTypeController {
     }
 
     @PostMapping("/producttype")
-    public String addProductType(@ModelAttribute ProductTypeEntity productTypeEntity) {
+    public String addProductType(@ModelAttribute ProductType productType) {
         // save new product type to database
-        ProductTypeEntity pte = service.save(productTypeEntity);
+        ProductType pte = service.save(productType);
         return "redirect:producttypes";
     }
 
