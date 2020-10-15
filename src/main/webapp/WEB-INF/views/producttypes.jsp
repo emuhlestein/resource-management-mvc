@@ -1,31 +1,4 @@
-<!DOCTYPE html>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<head>
-    <title>Product Type</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <link href="webjars/bootstrap/4.1.0/css/bootstrap.min.css" rel="stylesheet"/>
-    <style>
-<!--        body {-->
-<!--            background-color: #3e3e3e;-->
-<!--            color: white;-->
-<!--        }-->
-        .delete-button {
-            display: inline-block !important;
-        }
-        .product-type-container {
-            max-width: 500px;
-  	        padding: 15px;
-  	        margin: 0 auto;
-        }
-        .submit-button {
-            max-width: 330px;
-            padding: 15px;
-            margin: 0 auto;
-        }
-
-    </style>
-</head>
-<body>
+    <%@ include file="common/header.jspf" %>
     <%@ include file="common/nav.jspf" %>
     <div class="container product-type-container">
         <h2 class="text-center">Product Types</h2>
@@ -88,8 +61,4 @@
 <!--            <button type="submit" class="btn btn-success btn-block submit-button">Create New Product Type</button>-->
 <!--        </form>-->
     </div>
-    <script src="webjars/jquery/3.5.1/jquery.min.js"></script>
-    <script src="webjars/popper.js/1.12.9-1/popper.js"></script>
-    <script src="webjars/bootstrap/4.1.0/js/bootstrap.min.js"></script>
-</body>
-</html>
+<%@ include file="common/footer.jspf" %>>

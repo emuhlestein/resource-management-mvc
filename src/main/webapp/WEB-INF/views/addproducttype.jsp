@@ -1,19 +1,5 @@
-<!DOCTYPE html>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<head>
-    <title>Add Product Type</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <link href="webjars/bootstrap/4.1.0/css/bootstrap.min.css" rel="stylesheet"/>
-    <style>
-        .product-type-form {
-            max-width: 330px;
-            padding: 15px;
-            margin: 0 auto;
-        }
-    </style>
-</head>
-<body>
-    <%@ include file="common/nav.jspf" %>
+
+    <%@ include file="common/header.jspf" %>
     <div class="container">
         <form class="product-type-form" method="post" action="producttype"">
             <h2 class="text-center">Add Product Type</h2>
@@ -28,9 +14,4 @@
             <button class="btn btn-success btn-block">Create</button>
         </form>
     </div>
-
-    <script src="webjars/jquery/3.5.1/jquery.min.js"></script>
-    <script src="webjars/popper.js/1.12.9-1/popper.js"></script>
-    <script src="webjars/bootstrap/4.1.0/js/bootstrap.min.js"></script>
-</body>
-</html>
+ <%@ include file="common/footer.jspf" %>

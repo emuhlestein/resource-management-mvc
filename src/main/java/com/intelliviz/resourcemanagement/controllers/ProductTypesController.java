@@ -1,8 +1,9 @@
 package com.intelliviz.resourcemanagement.controllers;
 
 import com.intelliviz.resourcemanagement.models.ProductType;
-import com.intelliviz.resourcemanagement.models.ProductTypeEntity;
-import com.intelliviz.resourcemanagement.services.ProductTypeService;
+//import com.intelliviz.resourcemanagement.models.ProductTypeEntity;
+import com.intelliviz.resourcemanagement.services.ProductTypesService;
+import com.intelliviz.resourcemanagement.utils.Utils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Controller;
@@ -12,14 +13,16 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+import static com.intelliviz.resourcemanagement.utils.Utils.PROD_TYPES_LINK;
+
 @Controller
-public class ProductTypeController {
+public class ProductTypesController {
 
-    private ProductTypeService service;
+    private ProductTypesService service;
 
-    private static Logger LOGGER = LogManager.getLogger(ProductTypeController.class);
+    private static Logger LOGGER = LogManager.getLogger(ProductTypesController.class);
 
-    public ProductTypeController(ProductTypeService service) {
+    public ProductTypesController(ProductTypesService service) {
         this.service = service;
     }
 
@@ -27,17 +30,17 @@ public class ProductTypeController {
     public String showProductTypePage(Model model) {
         LOGGER.info("In ProductTypeController: showProductTypePage");
         model.addAttribute("errorMessage", "The operation failed");
-        List<ProductType> productTypes = service.getAll();
-        model.addAttribute("producttypes", productTypes);
-        return "producttype";
+        Utils.setActiveLink(model, PROD_TYPES_LINK);
+        model.addAttribute("producttypes", service.getAll());
+        return "producttypes";
     }
 
     @GetMapping("/producttypes/{id}")
     public String showProductTypePageForId(@PathVariable int id, ModelMap model) {
         LOGGER.info("In ProductTypeController: showProductTypePageForId: " + id);
-        List<ProductTypeEntity> productTypeEntities = service.getAllEntities();
+        List<ProductType> productTypeEntities = service.getAll();
         model.addAttribute("producttypes", productTypeEntities);
-        return "producttype";
+        return "producttypes";
     }
 
 //    @GetMapping("/producttype")
