@@ -1,9 +1,11 @@
 package com.intelliviz.resourcemanagement.models;
 
-public class ProductType {
+public class Product {
     private long id;
-    private String name;
+    private String name; // White Wheat
     private String description;
+    private long product_type_id;
+
 
     public long getId() {
         return id;
@@ -29,8 +31,10 @@ public class ProductType {
         this.description = description;
     }
 
+
+
     @Override
     public String toString() {
-        return String.format("\nProductType [id=%s, name=%s, description=%s]", id, name, description);
+        return String.format("\nPerson [id=%s, name=%s, description=%s]", id, name, description);
     }
 }
