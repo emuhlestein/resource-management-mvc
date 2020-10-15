@@ -7,26 +7,7 @@
         <ul class="navbar-nav mr-auto" id="NavBar">
             <li class="btn"><a class="blah1 nav-link ${prodTypesActive}" href="/producttypes">Product Types</a></li>
             <li class="btn"><a class="blah2 nav-link ${prodActive}" href="<c:url value="/products"/>">Products</a></li>
+            <li class="btn"><a class="blah2 nav-link ${containerTypesActive}" href="<c:url value="/containertypes"/>">Container Types</a></li>
         </ul>
     </div>
 </nav>
-<script>
-$('#NavBar li a').on('click', () => {
-    let activeLink = $('.active');
-    activeLink.removeClass('active');
-    $(this).parent().addClass('active');
-});
-/*
-const header = document.getElementById("NavBar");
-const btns = header.getElementsByClassName("btn");
-for(let i = 0; i < btns.length; i++) {
-    btns[i].addEventListener("click", () => {
-        console.log('In addEventListener');
-        let current = document.getElementsByClassName("active");
-        console.log('****************** ', current[0].className);
-        current[0].className = current[0].className.replace(" active", "");
-        this.className += " active";
-    });
-}
-*/
-</script>

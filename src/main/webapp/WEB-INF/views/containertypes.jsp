@@ -1,13 +1,12 @@
     <%@ include file="common/header.jspf" %>
     <%@ include file="common/nav.jspf" %>
     <div class="container product-type-container">
-        <h2 class="text-center">Product Types</h2>
-        <p><font color="red">${errorMessage}</font></p>
+        <h2 class="text-center">Container Types</h2>
         <table class="table table-striped">
             <thead>
             <tr>
                 <th>
-                    Product Types
+                    Container Type
                 </th>
                 <th>
                     Description
@@ -18,13 +17,13 @@
             </tr>
             </thead>
             <tbody>
-            <c:forEach var="producttype" items="${producttypes}">
+            <c:forEach var="containertype" items="${containertypes}">
                 <tr>
-                    <td><c:out value="${producttype.name}"/></td>
-                    <td><c:out value="${producttype.description}"/></td>
+                    <td><c:out value="${containertype.name}"/></td>
+                    <td><c:out value="${containertype.description}"/></td>
                     <td class="text-center">
                     <a type="button" class="btn btn-danger"
-                        href="/delete-producttype/${producttype.id}">Delete</a>
+                        href="/delete-containertype/${containertype.id}">Delete</a>
                     </td>
                 </tr>
             </c:forEach>
@@ -32,10 +31,6 @@
 
         </table>
 
-        <a href="addproducttype" class="btn btn-success btn-block submit-button">Create New Product Type</a>
-
-<!--        <form action="/producttype" method="get">-->
-<!--            <button type="submit" class="btn btn-success btn-block submit-button">Create New Product Type</button>-->
-<!--        </form>-->
+        <a href="addcontainertype" class="btn btn-success btn-block submit-button">Create new container type</a>
     </div>
 <%@ include file="common/footer.jspf" %>>
