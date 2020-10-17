@@ -27,7 +27,6 @@
                     <td class="text-center">
                     <form id="delete-product-type" action="/producttype" method="post">
                         <input type="hidden" name="id" value="${producttype.id}">
-                        <input type="hidden" name="method" value="delete">
                         <button type="submit" class="btn btn-danger" click="return confirmDelete()">Delete</button>
                     </form>
                     </td>
@@ -54,6 +53,9 @@ let forms = document.querySelectorAll('#delete-product-type');
 forms.forEach((form, index) => {
     form.addEventListener('submit', (event) => {
         event.preventDefault();
+        console.log("Action: ", form.action);
+        console.log("Method: ", form.method);
+        console.log("Form: ", form);
         $.ajax({
             type: "DELETE",
             url: form.action,

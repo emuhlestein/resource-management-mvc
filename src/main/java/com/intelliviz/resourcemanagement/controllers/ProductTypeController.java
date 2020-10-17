@@ -64,20 +64,22 @@ public class ProductTypeController {
     }
 
     @DeleteMapping("/producttype")
-    public String deleteProductType(@RequestParam int id) {
+    public String deleteProductType(@RequestParam int id, ModelMap model) {
         // delete the product type
         LOGGER.info("In ProductTypeController: deleteProductType: " + id);
-//        if(id != -1) {
-//            service.deleteById(id);
-//        }
-        return "redirect:/producttypes";
+        if(id != -1) {
+            service.deleteById(id);
+        }
+        List<ProductType> productTypeEntities = service.getAll();
+        model.addAttribute("producttypes", productTypeEntities);
+        return "producttypes";
     }
 
     @DeleteMapping("/producttype/{id}")
 //    public String deleteProductType(@PathVariable int id) {
     public String deleteProductTypeById(@RequestParam int id) {
         // delete the product type
-        LOGGER.info("In ProductTypeController: deleteProductType: " + id);
+        LOGGER.info("In ProductTypeController: deleteProductTypeById: " + id);
 //        if(id != -1) {
 //            service.deleteById(id);
 //        }

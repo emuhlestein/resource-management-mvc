@@ -25,15 +25,5 @@
                     margin: 0 auto;
                 }
     </style>
-<script>
-
-
-                $('form.delete-product-type').submit(function(e) {
-                    console.log("We are here!!!!!!!!!!!!!!!!");
-                    e.preventDefault();
-                });
-</script>
-
-
 </head>
 <body>
