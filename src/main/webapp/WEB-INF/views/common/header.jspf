@@ -3,7 +3,8 @@
 <head>
     <title>Add Product Type</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <link href="webjars/bootstrap/4.1.0/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="/webjars/bootstrap/4.1.0/css/bootstrap.min.css" rel="stylesheet"/>
+     <script src="/webjars/jquery/3.5.1/jquery.min.js"></script>
     <style>
         .product-type-form {
             max-width: 330px;
@@ -24,6 +25,15 @@
                     margin: 0 auto;
                 }
     </style>
+<script>
+
+
+                $('form.delete-product-type').submit(function(e) {
+                    console.log("We are here!!!!!!!!!!!!!!!!");
+                    e.preventDefault();
+                });
+</script>
+
+
 </head>
 <body>
-<script src="webjars/jquery/3.5.1/jquery.min.js"></script>

@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class ProductTypeServiceImpl implements ProductTypesService {
+public class ProductTypeServiceImpl implements ProductTypeService {
 
     private ProductTypesDao productTypeDao;
 

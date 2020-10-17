@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class ProductsController {
-    private static Logger LOGGER = LogManager.getLogger(ProductTypesController.class);
+    private static Logger LOGGER = LogManager.getLogger(ProductTypeController.class);
 
     @GetMapping("/products")
     public String showProducts(Model model) {
