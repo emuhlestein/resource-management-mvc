@@ -20,6 +20,7 @@ public class ProductTypeDaoImpl implements ProductTypesDao {
         this.jdbcTemplate = jdbcTemplate;
     }
 
+    @Override
     public List<ProductType> getAll() {
         List<ProductType> productTypes = jdbcTemplate.query("select * from product_type", (rs, rowNum) -> {
             ProductType productType = new ProductType();
@@ -32,6 +33,7 @@ public class ProductTypeDaoImpl implements ProductTypesDao {
         return productTypes;
     }
 
+    @Override
     public ProductType insert(ProductType productType) {
         String sql = "insert into product_type(name, description) values(:name, :description)";
         Map<String, String> params = new HashMap<>();
@@ -41,6 +43,7 @@ public class ProductTypeDaoImpl implements ProductTypesDao {
         return productType;
     }
 
+    @Override
     public void deleteById(long id) {
         String sql = "DELETE FROM product_type WHERE id = :id";
         MapSqlParameterSource params = new MapSqlParameterSource();

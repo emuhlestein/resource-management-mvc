@@ -1,5 +1,4 @@
-
-    <script src="webjars/bootstrap/4.1.0/js/bootstrap.bundle.min.js"></script>
-    <script src="webjars/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+    <script src="/webjars/bootstrap/4.1.0/js/bootstrap.bundle.min.js"></script>
+    <script src="/webjars/bootstrap/4.1.0/js/bootstrap.min.js"></script>
 </body>
 </html>

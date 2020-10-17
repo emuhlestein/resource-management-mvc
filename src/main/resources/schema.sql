@@ -19,7 +19,9 @@ CREATE TABLE IF NOT EXISTS product (
     PRIMARY KEY (id)
 );
 
-CREATE TABLE IF NOT EXISTS container (
+--DROP TABLE IF EXISTS container_type;
+
+CREATE TABLE IF NOT EXISTS container_type (
     id INTEGER NOT NULL AUTO_INCREMENT,
     name VARCHAR(64) NOT NULL,
     description VARCHAR(256) NOT NULL,

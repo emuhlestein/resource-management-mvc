@@ -1,8 +1,9 @@
 package com.intelliviz.resourcemanagement.controllers;
 
+import com.intelliviz.resourcemanagement.models.Id;
 import com.intelliviz.resourcemanagement.models.ProductType;
 //import com.intelliviz.resourcemanagement.models.ProductTypeEntity;
-import com.intelliviz.resourcemanagement.services.ProductTypesService;
+import com.intelliviz.resourcemanagement.services.ProductTypeService;
 import com.intelliviz.resourcemanagement.utils.Utils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -16,13 +17,13 @@ import java.util.List;
 import static com.intelliviz.resourcemanagement.utils.Utils.PROD_TYPES_LINK;
 
 @Controller
-public class ProductTypesController {
+public class ProductTypeController {
 
-    private ProductTypesService service;
+    private ProductTypeService service;
 
-    private static Logger LOGGER = LogManager.getLogger(ProductTypesController.class);
+    private static Logger LOGGER = LogManager.getLogger(ProductTypeController.class);
 
-    public ProductTypesController(ProductTypesService service) {
+    public ProductTypeController(ProductTypeService service) {
         this.service = service;
     }
 
@@ -62,13 +63,26 @@ public class ProductTypesController {
         return "redirect:producttypes";
     }
 
-    @GetMapping("/delete-producttype/{id}")
-    public String deleteProductType(@PathVariable int id) {
+    @DeleteMapping("/producttype")
+    public String deleteProductType(@RequestParam int id, ModelMap model) {
         // delete the product type
         LOGGER.info("In ProductTypeController: deleteProductType: " + id);
         if(id != -1) {
             service.deleteById(id);
         }
+        List<ProductType> productTypeEntities = service.getAll();
+        model.addAttribute("producttypes", productTypeEntities);
+        return "producttypes";
+    }
+
+    @DeleteMapping("/producttype/{id}")
+//    public String deleteProductType(@PathVariable int id) {
+    public String deleteProductTypeById(@RequestParam int id) {
+        // delete the product type
+        LOGGER.info("In ProductTypeController: deleteProductTypeById: " + id);
+//        if(id != -1) {
+//            service.deleteById(id);
+//        }
         return "redirect:/producttypes";
     }
 }
