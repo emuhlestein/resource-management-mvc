@@ -31,3 +31,10 @@ VALUES(10002,  'James', 'New York',sysdate());
 INSERT INTO PERSON (ID, NAME, LOCATION, BIRTH_DATE ) 
 VALUES(10003,  'Pieter', 'Amsterdam',sysdate());
 ```
+## NOTES
+HTML form only supports POST and GET.  
+
+Override form submit to force delete.
+
+Attempt to send delete from JSP:  
+"JSPs only permit GET, POST or HEAD. Jasper also permits OPTIONS",
